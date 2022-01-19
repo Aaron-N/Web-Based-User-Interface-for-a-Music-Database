@@ -1,0 +1,153 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+        .topnav {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #E2A42B;
+      color: white;
+    }
+
+    .btn {
+      background-color: #333;
+      border: none;
+      color: white;
+      padding: 12px 30px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .btn:hover {
+      background-color: #E2A42B;
+    }
+
+    .img-container {
+          text-align: center;
+    }
+
+    .title {
+          text-align: center;
+    }
+
+    .intro {
+          width: 85%;
+          text-align: justify;
+          padding: 50px 50px 50px 160px;
+    }
+
+    input[type=submit] {
+          background-color: #333;
+          border: none;
+          color: white;
+          padding:16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer
+    }
+
+    input[type=button] {
+          background-color: #333;
+          border: none;
+          color: white;
+          padding:16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer
+    }
+
+    body {
+       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;   
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+  <title> MKAN Music Database </title>
+</head>
+<body>
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="/artists">Artists</a>
+    <a class="active" href="/albums">Albums</a>
+    <a href="/record_labels">Record Labels</a>
+    <a href="/streaming_services">Streaming Services</a>
+    <a href="/label_stream">Label Streams</a>
+  </div>
+  <p>Add, search, and view music albums in the MKAN Database.</p>
+  <h2>Add New Album:</h2>
+    <form id="addalbum" action="/albums" method="post">
+    <fieldset>
+        <label>Album Name:</label><br>
+        <input type="text" name="albumName"><br>
+        <label>Artist:</label><br>
+        <select name="artist">
+            {{#each artists}}
+            <option value="{{artistID}}">{{name}}</option>
+            {{/each}}
+        </select><br>
+        <label>Record Label:</label><br>
+        <select name="recordLabel">
+            {{#each record_labels}}
+            <option value="{{labelID}}">{{name}}</option>
+            {{/each}}
+        </select><br>
+        <label>Release Date:</label><br>
+        <input type="date" name="releaseDate"><br>
+        <br>
+        <input type="submit" value="Add Album">
+    </fieldset>
+    </form>
+<br>
+
+
+<h2>Current Albums:</h2>
+<table>
+    <thead> 
+        <th>Album Name</th>
+        <th>Artist</th> 
+        <th>Record Label</th>
+        <th>Release Date</th>
+        <th></th>
+        <th></th>   
+    </thead> 
+    <tbody>
+        {{#each albums}} 
+        <tr> 
+            <td>{{albumName}}</td> 
+            <td>{{artist}}</td> 
+            <td>{{recordLabel}}</td> 
+            <td>{{releaseDate}}</td>
+            <td><button style="background-color:#333; color:white;">Update</td> 
+            <td><button style="background-color:red; color:white;" onclick="deleteAlbum({{albumID}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>

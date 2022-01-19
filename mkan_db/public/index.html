@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>MKAN Music Database</title>
+</head>
+<body>
+	<div class="topnav">
+	  <a class="active" href="index.html">Home</a>
+	  <a href="/artists">Artists</a>
+	  <a href="/albums">Albums</a>
+	  <a href="/record_labels">Record Labels</a>
+	  <a href="/streaming_services">Streaming Services</a>
+	  <a href="/label_stream">Label Streams</a>
+	</div>
+	<h1>Welcome to the MKAN Music Database!</h1>
+	<p>Recording artists, albums, record labels, and streaming services' relationships.</p>
+	<p>This site is intended for use by Administators of the Music Database.</p>
+	<p>Click on the navbar links above to interface with each table available.</p>
+
+	<h2>Full Database Search:</h2>
+	<form>
+	<fieldset>
+  		<label>Artist Name:</label><br>
+  		<select name="artist">
+  			<option disabled selected value> ------- </option>
+  			<option value="1">Black Sabbath</option>
+  			<option value="2">Lady Gaga</option>
+  			<option value="3">Kraftwerk</option>
+  		</select>
+  		<br>
+  		<label>Album Name:</label><br>
+  		<select name="albumName">
+  			<option disabled selected value> ------- </option>
+  			<option value="1">Paranoid</option>
+  			<option value="2">Chromatica</option>
+  			<option value="3">Computer World</option>
+  		</select>
+  		<br>
+  		<label>Release Date:</label><br>
+  		<input type="date"><br>
+  		<label>Record Label:</label><br>
+  		<select name="recordLabel">
+  			<option disabled selected value> ------- </option>
+  			<option value="1">Vertigo</option>
+  			<option value="2">Interscope</option>
+  			<option value="3">Kling Klang</option>
+  		</select>
+  		<br>
+  		<label>Streaming Service Name:</label><br>
+  		<select name="streamingService">
+  			<option disabled selected value> ------- </option>
+  			<option value="1">Apple Music</option>
+  			<option value="2">Pandora</option>
+  			<option value="3">Spotify</option>
+  		</select>
+  		<br><br>
+  		<input type="submit" value="Search">
+  	</fieldset>
+	</form>
+
+</body>
+</html>

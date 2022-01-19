@@ -1,0 +1,159 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+        .topnav {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #E2A42B;
+      color: white;
+    }
+
+    .btn {
+      background-color: #333;
+      border: none;
+      color: white;
+      padding: 12px 30px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .btn:hover {
+      background-color: #E2A42B;
+    }
+
+    .img-container {
+          text-align: center;
+    }
+
+    .title {
+          text-align: center;
+    }
+
+    .intro {
+          width: 85%;
+          text-align: justify;
+          padding: 50px 50px 50px 160px;
+    }
+
+    input[type=submit] {
+          background-color: #333;
+          border: none;
+          color: white;
+          padding:16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer
+    }
+
+    input[type=button] {
+          background-color: #333;
+          border: none;
+          color: white;
+          padding:16px 32px;
+          text-decoration: none;
+          margin: 4px 2px;
+          cursor: pointer
+    }
+
+    body {
+       font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;   
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+  </style>
+  <title> MKAN Music Database </title>
+</head>
+<body>
+  <div class="topnav">
+    <a href="index.html">Home</a>
+    <a class="active" href="/artists">Artists</a>
+    <a href="/albums">Albums</a>
+    <a href="/record_labels">Record Labels</a>
+    <a href="/streaming_services">Streaming Services</a>
+    <a href="/label_stream">Label Streams</a>
+  </div>
+  <p>Add, search, and view recording artists in the MKAN Database.</p>
+  <h2>Add New Artist:</h2>
+    <form id="addartist" action="/artists" method="post">
+    <fieldset>
+        <label>Artist Name:</label><br>
+        <input type="text" name="name"><br>
+        <label>Record Label:</label><br>
+        <select name="recordLabel">
+            {{#each record_labels}}
+            <option value="{{labelID}}">{{name}}</option>
+            {{/each}}
+            <!--<option value=NULL>Unsigned</option>-->
+        </select>
+        <br><br>
+        <input type="submit" value="Add Artist">
+    </fieldset>
+    </form>
+<br>
+
+<h2>Search New Artists:</h2>
+    <form>
+    <fieldset>
+        <!--<label>Search by Artist Name:</label><br>
+        <input id='artist_name_search_string' type='text' name='artist_name_search_string' value=''>
+        <input type="button" value="Search" onclick="searchArtistsByName()"><br><br>-->
+        <label>Filter by Record Label:</label><br>
+        <select id='recordLabel_filter' name="recordLabel">
+            {{#each record_labels}}
+            <option value="{{labelID}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <input type="button" value="Filter" onclick="searchArtistsByRecordLabel()"><br><br>
+        <input type="button" value="Clear Search Results" onclick="window.location.href='/artists';">
+    </fieldset>
+    </form>
+
+
+<h2>Current Artists:</h2>
+<table>
+    <thead> 
+        <th>Artist Name</th> 
+        <th>Record Label</th>
+        <th></th> 
+        <th></th>    
+    </thead> 
+    <tbody>
+        {{#each artists}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{recordLabel}}</td>
+            <td><button style="background-color:#333; color:white;" onclick="window.location.href='/artist/{{artistID}}';">Update</td>
+            <td><button style="background-color:red; color:white;" onclick="deleteArtist({{artistID}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table> 
+</html>
